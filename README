@@ -1,0 +1,3 @@
+# Watchdog
+
+PocketMine-MP plugin that kill the server immediately when the main thread stop responding.

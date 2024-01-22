@@ -1,0 +1,5 @@
+name: Watchdog
+version: 0.0.1
+main: Blackjack200\Watchdog\Main
+api: 5.0.0
+src-namespace-prefix: Blackjack200\Watchdog
