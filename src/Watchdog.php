@@ -8,7 +8,7 @@ use pocketmine\thread\Thread;
 use pocketmine\utils\Process;
 
 class Watchdog extends Thread {
-	private const MAX_MAIN_THREAD_HUNG_UP_SEC = 10;
+	private const MAX_MAIN_THREAD_HUNG_UP_SEC = 1;
 	private float $lastHeartbeatSec;
 	private ThreadSafeLogger $logger;
 
@@ -33,7 +33,8 @@ class Watchdog extends Thread {
 					$this->logger->alert("Server stopped responding ({$secSinceLastHeartbeat}s).");
 					$this->logger->alert("Terminating the server.");
 					$this->logger->alert(str_repeat("-", 40));
-					@Process::kill(Process::pid(), true);
+					Process::kill(Process::pid(), true);
+					posix_kill(getmypid(), SIGKILL);
 				}
 			});
 			$this->synchronized(function() : void {
