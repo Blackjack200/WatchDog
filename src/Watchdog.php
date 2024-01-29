@@ -8,7 +8,7 @@ use pocketmine\thread\Thread;
 use pocketmine\utils\Process;
 
 class Watchdog extends Thread {
-	private const MAX_MAIN_THREAD_HUNG_UP_SEC = 1;
+	private const MAX_MAIN_THREAD_HUNG_UP_SEC = 10;
 	private float $lastHeartbeatSec;
 	private ThreadSafeLogger $logger;
 
